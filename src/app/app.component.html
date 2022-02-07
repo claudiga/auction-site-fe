@@ -22,9 +22,9 @@
     <mat-menu class="menu-button" #menu2="matMenu" [overlapTrigger]="true">
       <button mat-menu-item [routerLink]="['/profile']">My Account</button>
       <button mat-menu-item [routerLink]="['/user/bidding']">Biddings</button>
-      <button mat-menu-item [routerLink]="['/user/purchasing']">Purchases</button>
+      <!-- <button mat-menu-item [routerLink]="['/user/purchasing']">Purchases</button> -->
       <button *ngIf="this.isAdmin()" mat-menu-item [routerLink]="['/auction']">Create New Auction</button>
-      <button mat-menu-item [routerLink]="['/item']">Create New Item</button>
+      <button *ngIf="this.isAdmin()" mat-menu-item [routerLink]="['/item']">Create New Item</button>
       <button mat-menu-item (click)="logout()">Log Out</button>
     </mat-menu>
   </mat-toolbar-row>
