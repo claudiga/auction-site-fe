@@ -68,8 +68,13 @@ export class CreateAuctionComponent implements OnInit {
   }
 
   save() {
+
+    this.auction.quantity = Number(this.auction.quantity);
+
     var utc = moment(this.auction.startDate).utc();
+    var utcEnd = moment(this.auction.scheduledEndDate).utc();
     this.auction.startDate = utc.format().toString()
+    this.auction.scheduledEndDate = utc.format().toString()
     this.auction.auctionItem = { id: this.auctionItem.id} 
     this.auction.auctionCategory = this.auctionCategory;
     this.auction.auctionAdmin = new AuctionAdmin(parseInt(this.currentUser.ID),null)

@@ -16,10 +16,13 @@ export class AuctionDetailViewComponent implements OnInit {
   }
 
   getQuantityLeft(auction){
-    if(auction.bidcount == 0){
+
+    if(auction.bidCount == 0){
       return 0;
     }
-    return 100 * (auction.bidcount/auction.quantity);
+    var a = 100 * (auction.bidCount/auction.quantity);
+
+    return a;
   }
 
 }

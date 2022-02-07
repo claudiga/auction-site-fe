@@ -12,7 +12,7 @@
           <span>{{auction.scheduledEndDate | date:'EEEE h:mm a'}}</span><br>
           <span>{{"Quantity left: "  + auction.quantity}} </span><br>
           <span>{{"sold: " +auction.bidCount}} </span>
-          <mat-progress-bar mode="determinate" value="{{getQuantityLeft(auction)}}"></mat-progress-bar>
+          <mat-progress-bar *ngIf="auction != null" mode="determinate" value="{{getQuantityLeft(auction)}}"></mat-progress-bar>
     
     
   </div>
