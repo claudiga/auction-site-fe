@@ -19,7 +19,7 @@ export class UserService {
     return this.http.get<User[]>(`${this.baseUrl}`);
   }
 
-  getUserById(id: number): Observable<User> {
+  getUserById(id: string): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/${id}`);
   }
 
@@ -34,8 +34,8 @@ export class UserService {
   updateUserById(id: number, value: any): Observable<Object> {
     return this.http.put<Object>(`${this.baseUrl}/${id}`, value);
   }
-  getBiddingsByUserId(id: number): Observable<Bidding[]> {
-    return this.http.get<Bidding[]>(`${this.baseUrl}/${id}/bidding`);
+  getBiddingsByUserId(id: string): Observable<Bidding[]> {
+    return this.http.get<Bidding[]>(`${this.baseUrl}/${id}/biddings`);
   }
 
   getPurchasesByUserId(id: number): Observable<Purchasing[]> {

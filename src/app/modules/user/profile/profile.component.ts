@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/security/authentication.service';
+import { JwtTokenHelperServiceService } from 'src/app/services/jwt-token-helper-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,15 +13,18 @@ export class ProfileComponent implements OnInit {
   public biddings;
   public address;
   constructor(private userService: UserService,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private jwtTokenHelperServiceService: JwtTokenHelperServiceService
+              ) {
   }
 
   ngOnInit(): void {
-    let currentUser = this.authenticationService.currentUserValue;
-    this.getUser(currentUser.id);
-    this.getUserBiddings(currentUser.id);
+    let currentUser = this.jwtTokenHelperServiceService.getJwtDecodedUser();
+
+    this.getUser(currentUser.ID);
+    this.getUserBiddings(currentUser.ID);
   }
-  getUser(id: number){
+  getUser(id: string){
     this.userService.getUserById(id).subscribe(
       data => {
         this.user = data;
@@ -28,7 +32,7 @@ export class ProfileComponent implements OnInit {
       error => console.log()
     );
   }
-  getUserBiddings(id: number){
+  getUserBiddings(id: string){
     this.userService.getBiddingsByUserId(id).subscribe(
       data => {
         this.biddings = data;

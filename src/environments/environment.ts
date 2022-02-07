@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   env: 'LOCAL',
   //baseAPIUrl: 'https://auction-backend-sys.herokuapp.com/api/v1',
-  baseAPIUrl: 'https://claudee.azurewebsites.net',
+  baseAPIUrl: 'http://localhost:8080',
   api: {
-    user: 'users',
+    user: 'user',
     address: 'addresses',
     auction: 'auctions',
     bidding: 'biddings',

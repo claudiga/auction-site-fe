@@ -9,6 +9,8 @@ import { User } from 'src/app/models/user';
 import { Auction } from 'src/app/models/auction';
 import { AuthenticationService } from 'src/app/security/authentication.service';
 import { Bidding } from 'src/app/models/bidding';
+import { JwtTokenHelperServiceService } from 'src/app/services/jwt-token-helper-service.service';
+import { TokenDto } from 'src/app/models/token-dto';
 
 @Component({
   selector: 'app-auction-detail',
@@ -20,17 +22,21 @@ export class AuctionDetailComponent implements OnInit {
   user: User;
   bidding: Bidding;
   purchasing: Purchasing;
+  currentUser: TokenDto;
   constructor(private auctionService: AuctionService,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private biddingService: BiddingService,
-    private purchasingService: PurchasingService) { }
+    private purchasingService: PurchasingService,
+    private jwtTokenHelperServiceService: JwtTokenHelperServiceService
+
+    ) { }
 
   ngOnInit(): void {
-    const currentUser = this.authenticationService.currentUserValue;
-    if(currentUser != null){
-    this.getUser(currentUser.id);
+     this.currentUser = this.jwtTokenHelperServiceService.getJwtDecodedUser();
+    if(this.currentUser != null){
+    this.getUser(this.currentUser.ID);
     }
     this.getAuction(this.activatedRoute.snapshot.params.id);
 
@@ -39,7 +45,9 @@ export class AuctionDetailComponent implements OnInit {
   createBidding() {
     const user = this.user;
     const auction = this.auctions;
-    this.bidding = { auction, user };
+    console.log(user)
+    console.log(auction)
+    this.bidding = { bidderId: Number(this.currentUser.ID) , auctionId: this.auctions.id };
     this.biddingService.createBidding(this.bidding).subscribe(() => {
       this.bidding = new Bidding();
     },
@@ -65,7 +73,7 @@ export class AuctionDetailComponent implements OnInit {
     );
   }
 
-  getUser(userId: number) {
+  getUser(userId: string) {
     this.userService.getUserById(userId).subscribe(
       user => {
         this.user = user;
