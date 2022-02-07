@@ -1,0 +1,18 @@
+<div class="container">
+<hr class="mt-2 mb-5">
+<div class="row text-center text-lg-left">
+    <div class="col-lg-3 col-md-4 col-6" *ngFor="let auction of auctions">
+      <a [routerLink]="['/category/{{category.id}}/auctions']" class="d-block mb-4 h-100 text-center">
+        <img class="img-fluid img-thumbnail" src="/assets/images/{{auction.auctionItem.photoUrl}}" style="height: 150px;"
+          alt="">
+          <br>
+          <span>Title: </span>
+          <span>{{auction.title}}</span><br>
+          <span>Price: </span>
+          <span>{{auction.auctionPrice}}</span><br>
+          <span>End in:</span>
+          <span>{{auction.scheduledEndDate}}</span>
+      </a>
+    </div>
+  </div>
+</div>

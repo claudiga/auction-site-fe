@@ -1,0 +1,18 @@
+<div >
+
+          <img class="img-thumbnail" src="{{'data:image/jpg;base64,' + auction.auctionItem.photoUrl}}" style="height: 150px;"
+            alt="">
+          <br>
+          <span>{{auction.title}}</span><br>
+          <span>Buy It Now: </span>
+          <span>{{auction.auctionPrice}}</span><br>
+          <span>Started on: </span>
+          <span>{{auction.startDate | date:'EEEE h:mm a'}}</span><br>
+          <span>Ends on: </span>
+          <span>{{auction.scheduledEndDate | date:'EEEE h:mm a'}}</span><br>
+          <span>{{"Quantity left: "  + auction.quantity}} </span><br>
+          <span>{{"sold: " +auction.bidCount}} </span>
+          <mat-progress-bar mode="determinate" value="{{getQuantityLeft(auction)}}"></mat-progress-bar>
+    
+    
+  </div>

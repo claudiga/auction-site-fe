@@ -1,0 +1,32 @@
+<div class="container text-center align-items-center">
+  <mat-card-header mat-card-title class="font-weight-light text-center">Recently added auctions
+  </mat-card-header>
+  <hr class="mt-2 mb-5 text-lg-center">
+  <div class="row text-center text-lg-center">
+    <mat-card-content class="" *ngFor="let recentlyAuction of recentlyAuctions">
+      <a [routerLink]="['/auction', recentlyAuction.id]" class="d-block mb-4 h-100 text-center">
+        <app-auction-detail-view [auction]="recentlyAuction"></app-auction-detail-view>
+ </a>
+    </mat-card-content>
+  </div>
+    <mat-card-header mat-card-title="Ending auctions" class="font-weight-light text-center">
+      Ending auctions</mat-card-header>
+    <hr class="mt-2 mb-5">
+    <div class="row text-center text-lg-left">
+      <mat-card-content class="" *ngFor="let endingAuction of recentlyAuctions">
+        <a [routerLink]="['/auction', endingAuction.id]" class="d-block mb-4 h-100 text-center">
+          <app-auction-detail-view [auction]="endingAuction"></app-auction-detail-view>
+        </a>
+      </mat-card-content>
+    </div>
+  <mat-card-header mat-card-title class="font-weight-light text-center">Recently ended auctions
+  </mat-card-header>
+  <hr class="mt-2 mb-5">
+  <div class="row text-center text-lg-left">
+    <mat-card-content class="" *ngFor="let recentlyEndedAuction of recentlyAuctions">
+      <a [routerLink]="['/auction', recentlyEndedAuction.id]" class="d-block mb-4 h-100 text-center">
+        <app-auction-detail-view [auction]="recentlyEndedAuction"></app-auction-detail-view>
+      </a>
+    </mat-card-content>
+  </div>
+</div>

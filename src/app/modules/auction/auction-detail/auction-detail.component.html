@@ -1,0 +1,26 @@
+ <div class="container text-center align-items-center">
+    <div class="row text-center text-lg-center">
+      <mat-card-content *ngIf="auctions?.auctionItem != null" class="col-lg-3 col-md-4 col-6">
+          <img class="img-thumbnail" src="{{'data:image/jpg;base64,' + auctions.auctionItem.photoUrl}}" style="height: 150px;"
+            alt="">
+          <br>
+          <b>{{auctions.title}}</b>
+          <span>{{auctions.title}}</span>
+          <h5>Buy now price: </h5>
+          <h4>{{auctions.auctionPrice}}</h4>
+          <h5>Started on: </h5>
+          <h4>{{auctions.startDate | date:'EEEE h:mm a'}}</h4>
+          <h5>Ends on: </h5>
+          <h4>{{auctions.scheduledEndDate | date:'EEEE h:mm a'}}</h4>
+          <h4>{{"Quantity left: "  + auctions.quantity}} </h4>
+          <h4>{{"sold: " +auctions.bidCount}} </h4>
+          <mat-progress-bar mode="determinate" value="{{getQuantityLeft(auctions)}}"></mat-progress-bar>
+          <button mat-raised-button type="button" class="btn btn-primary btn-lg" (click)="createBidding()">New Bid</button>
+          <button mat-raised-button type="button" class="btn btn-primary btn-lg" (click)="createPurchasing()">Buy Now</button>  
+          <div class="d-flex p-2 col-example">I'm a flexbox container!</div>
+          <div class="d-inline-flex p-2 col-example">I'm an inline flexbox container!</div>
+        </mat-card-content>
+    </div>
+    
+  </div>
+

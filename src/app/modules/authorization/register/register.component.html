@@ -1,0 +1,40 @@
+<mat-toolbar>
+  <span>Registration</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <mat-form-field class="full-width">
+      <mat-label>User Name</mat-label>
+      <input matInput placeholder="User name" id="username" required [(ngModel)]="user.username" name="username">
+    </mat-form-field>
+    <br />
+    <mat-form-field class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" id="password" required [(ngModel)]="user.password" name="password">
+    </mat-form-field>
+    <br />
+    <mat-form-field class="full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="First name" id="firstName" required [(ngModel)]="user.firstName" name="firstName">
+    </mat-form-field>
+    <br />
+    <mat-form-field class="full-width">
+      <mat-label>Surname</mat-label>
+      <input matInput placeholder="Surname" id="surname" required [(ngModel)]="user.surname" name="surname">
+    </mat-form-field>
+    <br />
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" id="email" required [(ngModel)]="user.email" name="email">
+    </mat-form-field>
+    <br />
+    <mat-form-field class="full-width">
+      <mat-label>Phone Number</mat-label>
+      <input matInput placeholder="Phone Number" id="phoneNumber" required [(ngModel)]="user.phoneNumber" name="phoneNumber">
+    </mat-form-field>
+    <br />
+  </mat-card-content>
+  <mat-card-actions>
+    <button type="submit" mat-raised-button color="primary" (click)="register()">REGISTER</button>
+  </mat-card-actions>
+</mat-card>

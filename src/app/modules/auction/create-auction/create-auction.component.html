@@ -1,0 +1,49 @@
+<mat-toolbar>
+  <span>Create Auction</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <mat-form-field class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" id="title" required [(ngModel)]="auction.title" name="title">
+    </mat-form-field><br>
+    <mat-form-field class="full-width">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Description" id="desription" required [(ngModel)]="auction.description"
+        name="description">
+    </mat-form-field><br>
+    <mat-form-field>
+      <mat-label>Item name</mat-label>
+      <mat-select>
+        <mat-option (click)="getAuctionItemById(auctionItem.id)" *ngFor="let auctionItem of auctionItems" [value]="auctionItem.id">
+          {{auctionItem.itemName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <img *ngIf=" auctionItem != null && auctionItem.photoUrl != null" src="{{'data:image/jpg;base64,' + auctionItem.photoUrl}}" /><br>
+    <mat-form-field class="full-width">
+      <mat-label>Buy Now Price</mat-label>
+      <input matInput placeholder="Buy Now Price" id="buyNow" required [(ngModel)]="auction.auctionPrice" name="buyNow">
+    </mat-form-field><br>
+
+
+    <mat-form-field appearance="fill"><br>
+      <mat-label>Choose a start date and time</mat-label>
+      <input matInput (dateChange)="updateStartDate($event)" required [(ngModel)]="auction.startDate" type="datetime-local" placeholder="start date">
+
+    </mat-form-field><br>
+    <!-- <mat-form-field class="full-width">
+      <mat-label>Auction Photo</mat-label>
+      <input matInput type="file" placeholder="Photos" id="photos" required [(ngModel)]="auction.photos" name="photos">
+    </mat-form-field><br> -->
+    <mat-form-field>
+      <mat-label>Auction Category</mat-label>
+      <mat-select>
+        <mat-option (click)="getAuctionCategoryById(auctionCategory.id)" *ngFor="let auctionCategory of auctionCategories" [value]="auctionCategory.id">
+          {{auctionCategory.auctionCategoryName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <button type="submit" class="btn btn-success" (click)="save()">Submit</button>
+  </mat-card-content>
+</mat-card>

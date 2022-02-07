@@ -1,0 +1,34 @@
+<br>
+<h1> Welcome, {{user.firstName}} {{user.lastName}}! </h1>
+<table class="table table-bordered">
+  <tr>
+    <h4> Account Information </h4>
+  </tr>
+  <tr>
+    <span> Account Name: {{user.username}}</span>
+  </tr>
+  <tr>
+    <span> First Name: {{user.firstName}}</span>
+  </tr>
+  <tr>
+    <span> Last Name: {{user.lastName}}</span>
+  </tr>
+  <tr>
+    <span> Email Address: {{user.email}}</span>
+  </tr>
+  <tr>
+    <span> Account Creation Date: {{user.creationDate | date:'EEEE h:mm a'}}</span>
+  </tr>
+  <tr> <button class="btn btn-primary btn-lgn" routerLink="/user/edit/{{user.id}}"> Edit User Details </button> </tr>
+  <tr> <button class="btn btn-primary btn-lgn" routerLink="/user/address"> Address Details </button> </tr>
+</table>
+<br>
+<a [routerLink]="['/user/bidding']" class="bidding-route"> Biddings </a>
+<table class="table table-bordered">
+  <div *ngFor="let bidding of biddings">
+    <img class="img-fluid img-thumbnail" src="/assets/images/{{bidding.auction.photos}}" style="height: 150px;"
+      alt=""><br>
+    <span>Auction name: {{bidding.auction.title}}</span><br>
+    <span>End Date: {{bidding.auction.endDate | date:'EEEE h:mm a'}}</span>
+  </div>
+</table>

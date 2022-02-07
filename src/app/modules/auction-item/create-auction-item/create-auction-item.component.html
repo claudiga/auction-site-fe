@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <span>Create Auction Item</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <mat-form-field class="full-width">
+      <mat-label>Item Name</mat-label>
+      <input matInput placeholder="Title" id="title" required [(ngModel)]="auctionItem.itemName" name="name">
+    </mat-form-field><br>
+    <mat-form-field class="full-width">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Description" id="desription" required [(ngModel)]="auctionItem.description"
+        name="description">
+    </mat-form-field><br>
+
+    <!-- <mat-form-field class="full-width">
+      <mat-label>Auction Photo</mat-label>
+      <input matInput type="file" placeholder="Photos" id="photos" required [(ngModel)]="auction.photos" name="photos">
+    </mat-form-field><br> -->
+    <input type="file" name="file" id="file" required (change)="onFileChanged($event)" />
+    <img src="{{'data:image/jpg;base64,' + photoBase64}}" /><br>
+
+    <mat-form-field>
+      <mat-label>Categories</mat-label>
+      <mat-select>
+        <mat-option (click)="getCategoryById(category.id)" *ngFor="let category of categories" [value]="category.id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <button type="submit" class="btn btn-success" (click)="save()">Submit</button>
+  </mat-card-content>
+</mat-card>
