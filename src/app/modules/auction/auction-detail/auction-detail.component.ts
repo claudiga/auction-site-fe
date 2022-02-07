@@ -29,8 +29,11 @@ export class AuctionDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const currentUser = this.authenticationService.currentUserValue;
+    if(currentUser != null){
     this.getUser(currentUser.id);
+    }
     this.getAuction(this.activatedRoute.snapshot.params.id);
+
   }
 
   createBidding() {
